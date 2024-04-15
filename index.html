@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maze Puzzle</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #222;
+      color: white;
+      font-family: Arial, sans-serif;
+    }
+
+    .settings-icon {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .settings-icon:hover {
+      transform: rotate(90deg);
+    }
+
+    .menu {
+      text-align: center;
+    }
+
+    .input-container {
+      margin-bottom: 20px;
+    }
+
+    .input-container input[type="text"] {
+      padding: 10px;
+      font-size: 16px;
+      background-color: rgba(150, 150, 150, 0.9);
+      border: none;
+      border-radius: 25px;
+      outline: none;
+      width: 200px;
+      margin-right: 10px;
+    }
+
+    .input-container input[type="text"]::placeholder {
+      color: #aaa;
+    }
+
+    .input-container button#enter-btn {
+      padding: 12px 30px;
+      font-size: 16px;
+      font-weight: bold;
+      text-transform: uppercase;
+      background-color: transparent;
+      color: #4CAF50;
+      border: 2px solid #4CAF50;
+      border-radius: 25px;
+      cursor: pointer;
+      outline: none;
+      transition: background-color 0.3s;
+    }
+
+    .input-container button#enter-btn:hover {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .input-container button#enter-btn:active {
+      transform: scale(0.95);
+    }
+
+    .menu .buttons button {
+      margin-top: 20px;
+      padding: 20px 40px; /* Reduced padding */
+      font-size: 18px;
+      font-weight: bold;
+      text-transform: uppercase;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      outline: none;
+      transition: background-color 0.3s;
+    }
+
+    .menu .buttons button#play-game-btn:hover {
+      background-color: #45a049;
+    }
+
+    .menu .buttons button#play-game-btn:active {
+      transform: scale(0.95);
+    }
+
+    .settings-menu {
+      position: absolute;
+      top: 60px;
+      left: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 10px;
+      border-radius: 10px;
+      display: none;
+    }
+
+    .settings-menu a {
+      display: block;
+      margin-bottom: 10px;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .settings-menu a:hover {
+      color: #000;
+    }
+
+    .icon-off:before {
+      content: "\f05e";
+      font-family: "Font Awesome 5 Free";
+    }
+
+    .maze-gif {
+      position: absolute;
+      top: 200px;
+      left: 20px;
+      width: 150px;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <i class="fas fa-cog settings-icon" onclick="toggleSettingsMenu()"></i>
+  <div class="menu">
+    <h1>Memory Maze Puzzle</h1>
+    <div class="input-container">
+      <input type="text" id="nickname" placeholder="Username">
+      <button id="enter-btn" onclick="enterUsername()">Enter</button>
+    </div>
+    <div class="username" id="username-display"></div>
+    <div class="buttons" id="buttons-container">
+      <a href= "style.html">
+        <button id="play-game-btn">Play</button>
+      </a>
+    </div>
+  </div>
+
+  <div class="settings-menu" id="settings-menu">
+    <a href="#" onclick="toggleMusic()">
+      Music 
+      <i id="music-icon" class="fas fa-music icon-off"></i>
+    </a>
+
+    <a href="#" onclick="toggleSound()">
+      Sound 
+      <i id="sound-icon" class="fas fa-volume-up icon-on"></i>
+    </a>
+  </div>
+
+  <script>
+    var musicOn = false;
+    var soundOn = true;
+
+    function enterUsername() {
+      var nickname = document.getElementById("nickname").value;
+      var usernameDisplay = document.getElementById("username-display");
+      var buttonsContainer = document.getElementById("buttons-container");
+      usernameDisplay.textContent = "Welcome, " + nickname + "!";
+      document.getElementById("nickname").style.display = "none";
+      document.getElementById("enter-btn").style.display = "none";
+      buttonsContainer.style.display = "block";
+    }
+
+    function toggleSettingsMenu() {
+      var settingsMenu = document.getElementById("settings-menu");
+      if (settingsMenu.style.display === "block") {
+        settingsMenu.style.display = "none";
+      } else {
+        settingsMenu.style.display = "block";
+      }
+    }
+
+    function toggleMusic() {
+      var musicIcon = document.getElementById("music-icon");
+      if (musicOn) {
+        musicIcon.classList.remove("icon-on");
+        musicIcon.classList.add("icon-off");
+        musicOn = false;
+      } else {
+        musicIcon.classList.remove("icon-off");
+        musicIcon.classList.add("icon-on");
+        musicOn = true;
+      }
+    }
+
+    function toggleSound() {
+      var soundIcon = document.getElementById("sound-icon");
+      if (soundOn) {
+        soundIcon.classList.remove("icon-on");
+        soundIcon.classList.add("icon-off");
+        soundOn = false;
+      } else {
+        soundIcon.classList.remove("icon-off");
+        soundIcon.classList.add("icon-on");
+        soundOn = true;
+      }
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
